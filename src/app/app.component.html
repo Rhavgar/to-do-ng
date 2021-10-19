@@ -1,0 +1,16 @@
+<h3>Cadastre suas tarefas</h3>
+
+<input type="text" [(ngModel)]="phTask" (keyup.enter)="addTask()">
+<button (click)="addTask()">Adicionar</button>
+
+<li *ngFor="let item of taskList; let i = index">
+  
+  <input type="checkbox" [(ngModel)]="item.done" [hidden]="item.edit">  
+  <p [style.text-decoration]="item.done ? 'line-through': 'solid'" *ngIf="!item.edit">{{ item.task }}</p>
+  
+  <input type="text" [(ngModel)]="item.task" [hidden]="!item.edit">
+  <button (click)="item.task ? updateTask(i) : null">{{item.edit ? 'Salvar' : 'Editar'}}</button>
+  
+  <button (click)="removeTask(i)" [hidden]="item.edit">Excluir</button>
+  
+</li>
