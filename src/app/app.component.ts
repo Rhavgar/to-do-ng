@@ -34,6 +34,9 @@ export class AppComponent
   {
     this.taskList.splice(i, 1);
   }
+
+  constructor() {}
+
 }
 
 interface Task
